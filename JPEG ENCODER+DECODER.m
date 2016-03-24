@@ -30,8 +30,8 @@ Q=[...
 luma=double(luma);
 luma=luma-128;
 %dct
-for i=1:8:size(luma,1)
-     for j=1:8:size(luma,2)
+for i=1:8:size(luma,1)-7
+     for j=1:8:size(luma,2)-7
          dluma(i:i+7,j:j+7)=dct2(luma(i:i+7,j:j+7));
          temp(i:i+7,j:j+7)=dluma(i:i+7,j:j+7)./Q;
          temp1(i:i+7,j:j+7)=round(temp(i:i+7,j:j+7));
@@ -41,8 +41,8 @@ figure(3),imshow(temp1)
 %figure(5),imshow(imgcb)
 %figure(6),imshow(imgcr)
 
-for i=1:8:size(temp1,1)
-   for j=1:8:size(temp1,2)
+for i=1:8:size(temp1,1)-7
+   for j=1:8:size(temp1,2)-7
        invluma(i:i+7,j:j+7)=temp1(i:i+7,j:j+7).*Q;
       
        RCLUMA(i:i+7,j:j+7)=idct2(invluma(i:i+7,j:j+7));
@@ -66,8 +66,8 @@ CQ=[...
 imgcb_420=double(imgcb_420);
 imgcb_420=imgcb_420-128;
 %dct
-for i=1:8:size(imgcb_420,1)
-     for j=1:8:size(imgcb_420,2)
+for i=1:8:size(imgcb_420,1)-7
+     for j=1:8:size(imgcb_420,2)-7
          dimgcb_420(i:i+7,j:j+7)=dct2(imgcb_420(i:i+7,j:j+7));
          temp21(i:i+7,j:j+7)=dimgcb_420(i:i+7,j:j+7)./CQ;
          temp221(i:i+7,j:j+7)=round(temp21(i:i+7,j:j+7));
@@ -75,8 +75,8 @@ for i=1:8:size(imgcb_420,1)
 end
 figure(5),imshow(temp221)
 
-for i=1:8:size(temp221,1)
-   for j=1:8:size(temp221,2)
+for i=1:8:size(temp221,1)-7
+   for j=1:8:size(temp221,2)-7
        invimgcb_420(i:i+7,j:j+7)=temp221(i:i+7,j:j+7).*CQ;
       
         RCIMGCB_420(i:i+7,j:j+7)=idct2(invimgcb_420(i:i+7,j:j+7));
@@ -91,8 +91,8 @@ RCIMGCB_420=RCIMGCB_420+128;
  imgcr_420=double(imgcr_420);
  imgcr_420=imgcr_420-128;
  %dct
- for i=1:8:size(imgcr_420,1)
-     for j=1:8:size(imgcr_420,2)
+ for i=1:8:size(imgcr_420,1)-7
+     for j=1:8:size(imgcr_420,2)-7
          dimgcr_420(i:i+7,j:j+7)=dct2(imgcr_420(i:i+7,j:j+7));
          temp31(i:i+7,j:j+7)=dimgcr_420(i:i+7,j:j+7)./CQ;
          temp321(i:i+7,j:j+7)=round(temp31(i:i+7,j:j+7));
@@ -100,8 +100,8 @@ RCIMGCB_420=RCIMGCB_420+128;
  end
 figure(7),imshow(temp321)
 
-for i=1:8:size(temp321,1)
-   for j=1:8:size(temp321,2)
+for i=1:8:size(temp321,1)-7
+   for j=1:8:size(temp321,2)-7
        invimgcr_420(i:i+7,j:j+7)=temp321(i:i+7,j:j+7).*CQ;
        RCIMGCR_420(i:i+7,j:j+7)=idct2(invimgcr_420(i:i+7,j:j+7));
    end
@@ -118,8 +118,8 @@ RCB1=double(RCB1);
 RCR1=double(RCR1);
 luma_dif = 0;
 luma_energy = 0;
-for i = 1: size(luma,1)
-   for j = 1:size(luma, 2)
+for i = 1: size(luma,1)-7
+   for j = 1:size(luma, 2)-7
         luma_dif  = luma_dif +((luma(i,j)-RCL(i,j))*(luma(i,j)-RCL(i,j)));
         luma_energy = luma_energy + luma(i,j)*luma(i,j);
    end
@@ -132,8 +132,8 @@ luma_snr = 10*log10 (luma_energy*luma_energy/luma_dif);
 cb_dif1 = 0;
 cb_energy1 = 0;
 %RCB1_ENERGY=0;
-for i = 1: size(imgcb_420,1)
-   for j = 1:size(imgcb_420,2)
+for i = 1: size(imgcb_420,1)-7
+   for j = 1:size(imgcb_420,2)-7
         cb_energy1 = cb_energy1 + imgcb_420(i,j);
         cb_dif1=cb_dif1+((imgcb_420(i,j)-RCB1(i,j))*(imgcb_420(i,j)-RCB1(i,j)));
    end
@@ -145,8 +145,8 @@ cb_snr1 = 10*log10(((cb_energy1)*(cb_energy1))/cb_dif1);
 cr_dif1 = 0;
 cr_energy1 = 0;
 
-for i = 1: size(imgcr_420,1)
-   for j = 1:size(imgcr_420,2)
+for i = 1: size(imgcr_420,1)-7
+   for j = 1:size(imgcr_420,2)-7
        cr_energy1 = cr_energy1 + imgcr_420(i,j);
        cr_dif1=cr_dif1+((imgcr_420(i,j)-RCR1(i,j))*(imgcr_420(i,j)-RCR1(i,j)));
    end
