@@ -1,4 +1,7 @@
+
 % Load the input image
+% STOP
+
 imgrgb = imread('Kodak23.bmp');
 
 img = rgb2ycbcr(imgrgb);
