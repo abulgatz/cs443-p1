@@ -1,7 +1,7 @@
 imgRGB = imread('download.png');
 
 % Show original RGB image
-subplot(2,4,1);
+subplot(1,4,1);
 imshow(imgRGB);
 title('RGB');
 
@@ -19,17 +19,17 @@ img444 = imgYCBCR;
 img411 = sub411(imgYCBCR);
 img420 = sub420(imgYCBCR);
 
-subplot(2,4,2);
-imshow(uint8(img444));
-title('4:4:4');
+% subplot(2,4,2);
+% imshow(uint8(img444));
+% title('4:4:4');
+% 
+% subplot(2,4,3);
+% imshow(uint8(img411));
+% title('4:1:1');
 
-subplot(2,4,3);
-imshow(uint8(img411));
-title('4:1:1');
-
-subplot(2,4,4);
-imshow(uint8(img420));
-title('4:2:0');
+% subplot(2,4,4);
+% imshow(uint8(img420));
+% title('4:2:0');
 
 % 4:4:4
 img444 = dctConvert(img444,8,false);
@@ -39,7 +39,7 @@ img444 = dctConvert(img444,8,true);
 img444 = uint8(img444);
 img444 = ycbcrToRGB(img444);
 
-subplot(2,4,5);
+subplot(1,4,2);
 imshow(img444);
 title('4:4:4 d,q,rgb');
 
@@ -51,7 +51,7 @@ img411 = dctConvert(img411,8,true);
 img411 = uint8(img411);
 img411 = ycbcrToRGB(img411);
 
-subplot(2,4,6);
+subplot(1,4,3);
 imshow(img411);
 title('4:1:1 d,q,rgb');
 
@@ -63,7 +63,7 @@ img420 = dctConvert(img420,8,true);
 img420 = uint8(img420);
 img420 = ycbcrToRGB(img420);
 
-subplot(2,4,7);
+subplot(1,4,4);
 imshow(img420);
 title('4:2:0 d,q,rgb');
 %compute errros and print them
