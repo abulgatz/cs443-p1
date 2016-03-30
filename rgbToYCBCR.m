@@ -1,5 +1,6 @@
-% Expects imgRGB to be a double
+% Expects imgRGB to be a uint8, returns uint8
 function imgYCBCR = rgbToYCBCR(imgRGB)
+    imgRGB = im2double(imgRGB);
     % S = [0.229, 0.587, 0.144;
     %     -0.168736, -0.331264, 0.5;
     %     0.5, -0.418688, -0.081312];
@@ -14,4 +15,6 @@ function imgYCBCR = rgbToYCBCR(imgRGB)
     imgYCBCR(:,:,1) = Y;
     imgYCBCR(:,:,2) = Cb;
     imgYCBCR(:,:,3) = Cr;
+    
+    imgYCBCR = im2uint8(imgYCBCR);
 end
