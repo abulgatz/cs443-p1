@@ -68,4 +68,9 @@ imshow(img420);
 title('4:2:0 d,q,rgb');
 
 MSE = computeMSE(imgRGB,img420);
-computePSNR(MSE)
+PSNR = computePSNR(MSE);
+
+disp('MSE = ')
+disp(MSE)
+disp('PSNR = ')
+disp(PSNR)
