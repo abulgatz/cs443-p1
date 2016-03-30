@@ -1,4 +1,4 @@
-imgRGB = imread('hello-world.png');
+imgRGB = imread('stripes.png');
 
 % Show original RGB image
 subplot(2,4,1);
@@ -66,3 +66,6 @@ img420 = ycbcr2rgb(img420);
 subplot(2,4,7);
 imshow(img420);
 title('4:2:0 d,q,rgb');
+
+MSE = computeMSE(imgRGB,img420);
+computePSNR(MSE)
