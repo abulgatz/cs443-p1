@@ -66,7 +66,7 @@ img420 = ycbcrToRGB(img420);
 subplot(2,4,7);
 imshow(img420);
 title('4:2:0 d,q,rgb');
-
+%compute errros and print them
 MSE = computeMSE(imgRGB,img420);
 PSNR = computePSNR(MSE);
 
