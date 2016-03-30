@@ -1,5 +1,5 @@
 function mse = computeMSE(orginalFrame,outputFrame)
-   [N, M,w] = size(orginalFrame);
+   [M, N,w] = size(orginalFrame);
    mse = 0;
    for y=1:N
        for x=1:M

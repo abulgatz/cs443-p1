@@ -1,4 +1,4 @@
-imgRGB = imread('stripes.png');
+imgRGB = imread('download.png');
 
 % Show original RGB image
 subplot(2,4,1);
@@ -37,7 +37,7 @@ img444 = dctQuantization(img444,false);
 img444 = dctQuantization(img444,true);
 img444 = dctConvert(img444,8,true);
 img444 = uint8(img444);
-img444 = ycbcr2rgb(img444);
+img444 = ycbcrToRGB(img444);
 
 subplot(2,4,5);
 imshow(img444);
@@ -49,7 +49,7 @@ img411 = dctQuantization(img411,false);
 img411 = dctQuantization(img411,true);
 img411 = dctConvert(img411,8,true);
 img411 = uint8(img411);
-img411 = ycbcr2rgb(img411);
+img411 = ycbcrToRGB(img411);
 
 subplot(2,4,6);
 imshow(img411);
@@ -61,7 +61,7 @@ img420 = dctQuantization(img420,false);
 img420 = dctQuantization(img420,true);
 img420 = dctConvert(img420,8,true);
 img420 = uint8(img420);
-img420 = ycbcr2rgb(img420);
+img420 = ycbcrToRGB(img420);
 
 subplot(2,4,7);
 imshow(img420);
