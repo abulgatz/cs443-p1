@@ -1,4 +1,4 @@
-function runme(startRowNumber,startColumnNumber,blockSize)
+function runme(startRowNumber,startColumnNumber,blockSize,show444,show420,show411)
     imgRGB = imread('download.png');
 
     % Show original RGB image
@@ -85,12 +85,30 @@ function runme(startRowNumber,startColumnNumber,blockSize)
     disp('PSNR = ')
     disp(PSNR)
     format bank
-    disp('Y block coefficents');
     y1 = ((startColumnNumber*blockSize)-blockSize)+1;
     length = blockSize * startColumnNumber;
-    disp(dctCoefficents444Y(startRowNumber:blockSize,y1:length));
-    disp('Cb block coefficents');
-    disp(dctCoefficents444Cb(startRowNumber:blockSize,y1:length));
-    disp('Cr block coefficents');
-    disp(dctCoefficents444Cr(startRowNumber:blockSize,y1:length));
+    if(show444)
+        disp('4:4:4 Y block coefficents');
+        disp(dctCoefficents444Y(startRowNumber:blockSize,y1:length));
+        disp('4:4:4 Cb block coefficents');
+        disp(dctCoefficents444Cb(startRowNumber:blockSize,y1:length));
+        disp('4:4:4 Cr block coefficents');
+        disp(dctCoefficents444Cr(startRowNumber:blockSize,y1:length));
+    end
+    if(show411)
+        disp('4:1:1 Y block coefficents');
+        disp(dctCoefficents411Y(startRowNumber:blockSize,y1:length));
+        disp('4:1:1 Cb block coefficents');
+        disp(dctCoefficents411Cb(startRowNumber:blockSize,y1:length));
+        disp('4:1:1 Cr block coefficents');
+        disp(dctCoefficents411Cr(startRowNumber:blockSize,y1:length));
+    end
+    if(show420)
+        disp('4:2:0 Y block coefficents');
+        disp(dctCoefficents420Y(startRowNumber:blockSize,y1:length));
+        disp('4:2:0 Cb block coefficents');
+        disp(dctCoefficents420Cb(startRowNumber:blockSize,y1:length));
+        disp('4:2:0 Cr block coefficents');
+        disp(dctCoefficents420Cr(startRowNumber:blockSize,y1:length));
+    end
 end
