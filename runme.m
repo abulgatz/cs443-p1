@@ -1,5 +1,5 @@
-function runme(startRowNumber,startColumnNumber,blockSize,show444,show420,show411)
-    imgRGB = imread('download.png');
+function runme(img_name,startRowNumber,startColumnNumber,blockSize,show444,show420,show411)
+    imgRGB = imread(img_name);
 
     % Show original RGB image
     subplot(1,4,1);
